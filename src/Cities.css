@@ -1,0 +1,58 @@
+.london{
+    color: red;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-gap: 10px;
+    /*padding-left: 50px;*/
+    /*background-color: red;*/
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-item {
+    background-color: rgba(0,0,0,0);
+    text-align: center;
+    gap: 10px;
+    /*width: 100%;*/
+    /*flex-basis: 100%;*/
+    /*height: auto;*/
+    /*align-self: stretch;*/
+    /*flex-grow: 1;*/
+    /*flex-shrink: 0;*/
+    /*flex: 1 0;*/
+
+}
+
+.city-image{
+    /*width: 80%;*/
+    /*height: 80%;*/
+    /*object-fit: cover;*/
+    /*overflow: hidden;*/
+}
+
+/*.city-image:hover{*/
+/*    transition: all .5s ease-in-out;*/
+/*    transform: scale(1.3);*/
+/*    padding-top: 20% ;*/
+/*    background-color: rgba(0,0,0,0);*/
+/*}*/
+
+/*.image1:hover{*/
+/*    transition: all .5s ease-in-out;*/
+/*    transform: scale(1.3);*/
+/*    padding-top: 20% ;*/
+/*    padding-left: 20%;*/
+/*    background-color: rgba(0,0,0,0);*/
+/*}*/
+
+/*.image3:hover{*/
+/*    transition: all .5s ease-in-out;*/
+/*    transform: scale(1.3);*/
+/*    padding-top: 20% ;*/
+/*    padding-right: 20%;*/
+/*    background-color: rgba(0,0,0,0);*/
+/*}*/

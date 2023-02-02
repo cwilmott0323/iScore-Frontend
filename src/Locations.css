@@ -1,0 +1,21 @@
+.Header{
+    margin-bottom: 20px;
+}
+
+.City{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.CountryImage{
+    border: cadetblue solid 2px;
+    margin: 20px;
+    width: 300px;
+    height: auto;
+}
+
+.CountryName{
+    font-weight: bold;
+    text-transform: uppercase;
+}

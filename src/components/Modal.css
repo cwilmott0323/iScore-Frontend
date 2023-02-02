@@ -1,0 +1,60 @@
+.modalBackground {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(40, 44, 52, 95%);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.modalContainer {
+    width: 500px;
+    height: auto;
+    border-radius: 12px;
+    background-color: rgba(40, 44, 52, 95%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+
+}
+
+.titleCloseBtn button {
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.Close{
+    float: left;
+    margin-left: 15px;
+}
+
+.account-create{
+    color: green;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.login-failed{
+    color: red;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.user-header{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr;
+}
+
+.User-Points{
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
