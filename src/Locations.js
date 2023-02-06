@@ -14,7 +14,7 @@ function Locations(){
         </div>
             <div className="City">
                 <a href="/locations/england"
-                ><img src={england} className="CountryImage" alt="logo"/>
+                ><img src="https://iscore-media.s3.us-east-2.amazonaws.com/Countries/England/bigben.jpeg" className="CountryImage" alt="logo"/>
                     </a>
                 <a href="/locations/newzealand">
                 <div className="CountryName">

@@ -36,9 +36,6 @@ function Login() {
     const navigate = useNavigate();
     const [email, setUserName] = useState();
     const [password, setPassword] = useState();
-    // const [emailValid, setEmailValid] = useState();
-    // const [usernameValid, setUsernameValid] = useState();
-    // const [passwordValid, setPasswordValid] = useState();
 
     console.log(x)
 
