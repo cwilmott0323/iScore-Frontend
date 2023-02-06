@@ -1,4 +1,3 @@
-import logo from './media/Rotating_earth_animated_transparent.gif';
 import './Home.css';
 import React, {useEffect, useState} from 'react';
 import SignupModal from "./components/Signup-Modal";
@@ -116,10 +115,6 @@ function Login() {
                         <p>
                             Need an account?
                         </p>
-                        {/*<button className="sign-up" onClick={() => {*/}
-                        {/*    setOpenModal(true);*/}
-                        {/*}}>Register*/}
-                        {/*</button>*/}
                         <button type="button" className="sign-up" onClick={() => setOpenModal(true)}>
                             Register
                         </button>
@@ -127,7 +122,7 @@ function Login() {
                 </form>
             </div>
             <div className="world">
-                <img src={logo} className="App-logo" alt="logo"/>
+                <img src={`${process.env.REACT_APP_MEDIA_BASE_URL}Global/Rotating_earth_animated_transparent.gif`} className="App-logo" alt="logo"/>
             </div>
         </div>
 

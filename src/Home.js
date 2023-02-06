@@ -1,7 +1,5 @@
-import logo from './media/Rotating_earth_animated_transparent.gif';
 import './Home.css';
 import React, {useState} from 'react';
-import SignupModal from "./components/Signup-Modal";
 function Home() {
     return (
 
