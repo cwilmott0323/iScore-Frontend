@@ -51,7 +51,7 @@ function UserHeader() {
 
 async function getDataAxiosUser(token) {
     try {
-        return await axios.get(`${process.env.REACT_APP_MEDIA_BASE_URL}accounts/me`,
+        return await axios.get(`${process.env.REACT_APP_API_BASE_URL}accounts/me`,
             {
                 headers: {
                     'Accept': 'application/json',
