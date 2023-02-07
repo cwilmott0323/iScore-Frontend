@@ -13,7 +13,7 @@ async function loginUser(credentials) {
 
     try {
         return {
-            token: await axios.post('https://sj9klp6ugk.execute-api.us-east-2.amazonaws.com/dev/accounts-login', JSON.stringify(credentials)),
+            token: await axios.post(`${process.env.REACT_APP_MEDIA_BASE_URL}accounts-login`, JSON.stringify(credentials)),
             error: null
         }
 

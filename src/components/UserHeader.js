@@ -51,7 +51,7 @@ function UserHeader() {
 
 async function getDataAxiosUser(token) {
     try {
-        return await axios.get('https://sj9klp6ugk.execute-api.us-east-2.amazonaws.com/dev/accounts/me',
+        return await axios.get(`${process.env.REACT_APP_MEDIA_BASE_URL}accounts/me`,
             {
                 headers: {
                     'Accept': 'application/json',
