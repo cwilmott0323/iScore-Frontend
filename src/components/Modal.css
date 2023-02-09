@@ -58,3 +58,24 @@
     grid-column: 1/2;
     grid-row: 2/3;
 }
+
+.modalContainer {
+    height: 200px;
+    overflow: hidden;
+}
+
+.modalContainer {
+    animation: 10s slide-up;
+    margin-top: 0;
+}
+
+@keyframes modalContainer {
+    from {
+        margin-top: 100%;
+        height: 300%;
+    }
+    to {
+        margin-top: 0;
+        height: 100%;
+    }
+}
