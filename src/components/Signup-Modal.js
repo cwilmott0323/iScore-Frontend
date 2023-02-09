@@ -5,7 +5,7 @@ import axios from "axios";
 async function createUser(credentials) {
     delete Object.assign(credentials, {["name"]: credentials["signupName"] })["signupName"];
     try {
-        return await axios.post('https://sj9klp6ugk.execute-api.us-east-2.amazonaws.com/dev/accounts-create', JSON.stringify(credentials))
+        return await axios.post(`${process.env.REACT_APP_API_BASE_URL}accounts-create`, JSON.stringify(credentials))
     } catch (e) {
         return {
             incorrect: "Account Creation Failed"
