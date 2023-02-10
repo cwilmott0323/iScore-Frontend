@@ -1,16 +1,51 @@
-import './Home.css';
-import React, {useState} from 'react';
-function Home() {
-    return (
+import React, {useState} from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Modal, Button} from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
 
-        <div>
-            <div className="App">
-                <header className="App-header">
-                    <h1 className="App-name">iScore</h1>
-                </header>
-            </div>
-</div>
+
+export default function App() {
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    return (
+        <>
+            <Button variant="primary" onClick={handleShow}>
+                Launch demo modal
+            </Button>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Modal heading</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control
+                                type="email"
+                                placeholder="name@example.com"
+                                autoFocus
+                            />
+                        </Form.Group>
+                        <Form.Group
+                            className="mb-3"
+                            controlId="exampleForm.ControlTextarea1"
+                        >
+                            <Form.Label>Example textarea</Form.Label>
+                            <Form.Control as="textarea" rows={3} />
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={handleClose}>
+                        Save Changes
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        </>
     );
 }
-
-export default Home;

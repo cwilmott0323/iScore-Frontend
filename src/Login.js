@@ -91,7 +91,7 @@ function Login() {
                                 />
                             </div>
                         </div>
-                        <div className="form-group-pass">
+                        <div className="form-group-both">
                             <div className="form-group mt-3">
                                 <label>Password: </label>
                                 <input
