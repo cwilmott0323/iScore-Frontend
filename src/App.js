@@ -1,11 +1,10 @@
-// import './App.css';
 import Home from './Home';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Locations from "./Locations";
+import Countries from "./Countries";
 import Login from "./Login";
 import React from "react";
-import England from "./England"
-import NewZealand from "./NewZealand"
+import Country from "./Country"
+import City from "./City";
 const App = () => {
 
     return (
@@ -14,9 +13,9 @@ const App = () => {
                 <Routes>
                     <Route exact path="/login" element={<Login/>}/>
                     <Route exact path="/" element={<Home/>}/>
-                    <Route exact path="/locations" element={<Locations/>}/>
-                    <Route exact path="/locations/england" element={<England/>}/>
-                    <Route exact path="/locations/newzealand" element={<NewZealand/>}/>
+                    <Route path="/countries" element={<Countries/>}/>
+                    <Route exact path="/countries/:country/cities" element={<Country/>}/>
+                    <Route exact path="/countries/:country/cities/:city" element={<City/>}/>
                 </Routes>
             </Router>
         </div>

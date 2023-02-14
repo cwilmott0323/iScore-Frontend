@@ -2,20 +2,20 @@
     margin-bottom: 20px;
 }
 
-.City{
+.Country, .City{
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
 
-.CountryImage{
+.CountryImage, .CityImage{
     border: cadetblue solid 2px;
     margin: 20px;
     width: 300px;
     height: auto;
 }
 
-.CountryName{
+.CountryName, .CityName{
     font-weight: bold;
     text-transform: uppercase;
 }

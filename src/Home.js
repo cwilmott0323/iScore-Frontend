@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Modal, Button} from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 
-
 export default function App() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);

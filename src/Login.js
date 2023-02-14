@@ -1,4 +1,3 @@
-import './Home.css';
 import React, {useEffect, useState} from 'react';
 import SignupModal from "./components/Signup-Modal";
 import SuccessModal from "./components/Success-Modal";
@@ -10,7 +9,7 @@ import IsAuth from "./IsAuth";
 import ErrorModal from "./components/Error-Modal";
 
 async function loginUser(credentials) {
-
+    console.log("Creds:", credentials)
     try {
         return {
             token: await axios.post(`${process.env.REACT_APP_API_BASE_URL}accounts-login`, JSON.stringify(credentials)),
@@ -40,7 +39,7 @@ function Login() {
 
     useEffect(() => {
         if (x) {
-            navigate("/locations");
+            navigate("/countries");
         }
     }, [navigate, x]);
 
@@ -62,7 +61,7 @@ function Login() {
         <div>
             <div className="App">
                 <header className="App-header">
-                    <h1 className="App-name">iScore</h1>
+                    {/*<h1 className="App-name">iScore</h1>*/}
                     {success && <SuccessModal/>}
                     {error && <ErrorModal error={error}/>}
                 </header>
@@ -71,13 +70,10 @@ function Login() {
             <div className="Auth-form-container">
                 <form className="Auth-form" onSubmit={handleSubmit}>
                     <div className="Auth-form-content">
-                        <h3 className="Auth-form-title">Sign In</h3>
+                        <h3 className="Auth-form-title">Log In</h3>
                         <div className="form-group-both">
                             <div className="form-group mt-3">
                                 <label className="email">Email address: </label>
-                                {/*<div className="OOF">*/}
-                                {/*    Invalid Email*/}
-                                {/*</div>*/}
                                 <input
                                     type="email"
                                     className="form-control mt-1"
@@ -85,7 +81,6 @@ function Login() {
                                     onChange={e => {
                                         setUserName(e.target.value)
                                         console.log("Email: ", email)
-                                        // emailCheck(email)
                                     }
                                         }
                                 />
@@ -105,24 +100,21 @@ function Login() {
                         <div className="popup">
                             <button className="submit"
                             >
-                                Submit
+                                Log in
                             </button>
                         </div>
-                        {openModal && <SignupModal setOpenModal={setOpenModal} setSuccess={setSuccess}/>}
+                        {openModal && <SignupModal setOpenModal={setOpenModal} setSuccess={setSuccess} openModal={openModal}/>}
                         <p className="forgot-password text-right mt-2">
                             Forgot <a href="#">password?</a>
                         </p>
-                        <p>
+                        <p className="account">
                             Need an account?
                         </p>
-                        <button type="button" className="sign-up" onClick={() => setOpenModal(true)}>
+                        <button type="button" className="register" onClick={() => setOpenModal(true)}>
                             Register
                         </button>
                     </div>
                 </form>
-            </div>
-            <div className="world">
-                <img src={`${process.env.REACT_APP_MEDIA_BASE_URL}Global/Rotating_earth_animated_transparent.gif`} className="App-logo" alt="logo"/>
             </div>
         </div>
 

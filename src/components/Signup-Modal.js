@@ -1,4 +1,5 @@
 import "./Modal.css";
+import "../index.css";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import Button from 'react-bootstrap/Button';
@@ -32,9 +33,7 @@ async function createUser(credentials) {
 }
 
 
-function SignupModal({ setOpenModal, setSuccess }) {
-
-
+function SignupModal({ setOpenModal, setSuccess, openModal }) {
     // Modal Stuff
     const handleClose = () => setOpenModal(false);
 
@@ -87,8 +86,6 @@ function SignupModal({ setOpenModal, setSuccess }) {
             setConfirmEmailBool(true)
         }
     }
-
-
 
     function checkPasswordMatch(passwordVerify, password) {
         if (!passwordVerify) {
@@ -159,17 +156,47 @@ function SignupModal({ setOpenModal, setSuccess }) {
     }, [confirmEmail, email, password, passwordVerify, signupName]);
 
     return(
-        <Modal show={true} onHide={handleClose}>
+        <Modal show={openModal} onHide={handleClose} contentClassName="modal-outer">
             <Modal.Header closeButton>
                 <Modal.Title>Registration</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {incorrect && <div>Please Try Again</div>}
-                {!emailValid && <div>Please enter a valid email.</div>}
-                {!confirmEmailBool && <div>Emails do not match.</div>}
-                {!signupNameBool && <div>Name is not valid.</div>}
-                {!passwordValid && <div>Password is not valid.</div>}
-                {!passwordVerifyBool && <div>Passwords do not match.</div>}
+                {
+                    incorrect &&
+                    <Modal.Dialog className="modal-error" contentClassName="modal-error">
+                        Please Try Again
+                    </Modal.Dialog>
+                }
+                {
+                    !emailValid &&
+                    <Modal.Dialog className="modal-error" contentClassName="modal-error">
+                        Please enter a valid email.
+                    </Modal.Dialog>
+                }
+                {
+                    !confirmEmailBool &&
+                    <Modal.Dialog className="modal-error" contentClassName="modal-error">
+                        Emails do not match.
+                    </Modal.Dialog>
+                }
+                {
+                    !signupNameBool &&
+                    <Modal.Dialog className="modal-error" contentClassName="modal-error">
+                        Name is not valid.
+                    </Modal.Dialog>
+                }
+                {
+                    !passwordValid &&
+                    <Modal.Dialog className="modal-error" contentClassName="modal-error">
+                        Password is not valid.
+                    </Modal.Dialog>
+                }
+                {
+                    !passwordVerifyBool &&
+                    <Modal.Dialog className="modal-error" contentClassName="modal-error">
+                        Passwords do not match.
+                    </Modal.Dialog>
+                }
                 <Form>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                         <Form.Label>Email address</Form.Label>
@@ -229,13 +256,14 @@ function SignupModal({ setOpenModal, setSuccess }) {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                    Close
-                </Button>
                 <Button
+                    className="register"
                     disabled={(!agreement || !allowRegister || !passwordVerifyBool || !signupNameBool || !confirmEmailBool || !passwordValid)}
                     variant="primary" onClick={handleSubmit}>
                     Register
+                </Button>
+                <Button className="register" variant="secondary" onClick={handleClose}>
+                    Close
                 </Button>
             </Modal.Footer>
         </Modal>
