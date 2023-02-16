@@ -7,15 +7,36 @@ import {useCallback, useEffect, useState} from "react";
 function City() {
 
     let [cityDataPlaces, setCityDataPlaces] = useState({});
+    let [cityDataFood, setCityDataFood] = useState({});
+    let [cityDataEvents, setCityDataEvents] = useState({});
     const [isLoading, setLoading] = useState(true);
     const [notFound, setNotFound] = useState(true);
+
+    const places = [];
+    const food = [];
+    const events = [];
 
     const getCityInfo = useCallback( async () => {
         try {
             const r = await axios.get(`${process.env.REACT_APP_API_BASE_URL}${window.location.pathname}`)
             console.log("Status:", r.status)
-                setCityDataPlaces(r.data)
-                setLoading(false)
+            r.data[0].forEach((item, i) => {
+                for(let key in item) {
+                    if (item[key] === "Place") {
+                        places.push(item)
+                    }
+                    if (item[key] === "Food") {
+                        food.push(item)
+                    }
+                    if (item[key] === "Event") {
+                        events.push(item)
+                    }
+                    setCityDataPlaces(places)
+                    setCityDataFood(food)
+                    setCityDataEvents(events)
+                }
+            });
+            setLoading(false)
 
         } catch (e) {
             setNotFound(false)
@@ -41,7 +62,6 @@ function City() {
     if (notFound === false) {
         return (
             <div>
-                {console.log("Status HTTP: ", notFound)}
                 Not Found
             </div>
         );
@@ -49,17 +69,36 @@ function City() {
     return(
         <div>
             {<UserHeader/>}
-            {console.log("Returned Data: ", cityDataPlaces)}
+            <div className=" ml-4 mr-4 ">
             <div className="city">
                 Places
-                <div className="grid-container-places  grid-container city">
-                    {!isLoading && <div>
-                    {cityDataPlaces[0].map(({ activity_id, activity_name, activity_type, city_id, city_name,country_id,country_name,image_location ,points, sponsored}) => (
+                    {!isLoading && <div className="grid grid-cols-4 gap-3">
+                    {cityDataPlaces.map(({ activity_id, activity_name, activity_type, city_id, city_name,country_id,country_name,image_location ,points, sponsored}) => (
                         <div className="City" key={activity_id}>
                                 <img src={`${process.env.REACT_APP_MEDIA_BASE_URL}${image_location}`} className="CityImage" alt="p" />
                         </div>
                     ))}
                         </div>}
+                </div>
+                <div className="city">
+                    Food
+                    {!isLoading && <div className="grid grid-cols-4 gap-3">
+                        {cityDataFood.map(({ activity_id, activity_name, activity_type, city_id, city_name,country_id,country_name,image_location ,points, sponsored}) => (
+                            <div className="City" key={activity_id}>
+                                <img src={`${process.env.REACT_APP_MEDIA_BASE_URL}${image_location}`} className="CityImage" alt="p" />
+                            </div>
+                        ))}
+                    </div>}
+                </div>
+                <div className="city">
+                    Events
+                    {!isLoading && <div className="grid grid-cols-4 gap-3">
+                        {cityDataEvents.map(({ activity_id, activity_name, activity_type, city_id, city_name,country_id,country_name,image_location ,points, sponsored}) => (
+                            <div className="City" key={activity_id}>
+                                <img src={`${process.env.REACT_APP_MEDIA_BASE_URL}${image_location}`} className="CityImage" alt="p" />
+                            </div>
+                        ))}
+                    </div>}
                 </div>
             </div>
         </div>

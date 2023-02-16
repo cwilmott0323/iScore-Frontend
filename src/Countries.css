@@ -1,21 +1,21 @@
-.Header{
-    margin-bottom: 20px;
-}
+/*.Header{*/
+/*    margin-bottom: 20px;*/
+/*}*/
 
-.Country, .City{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
+/*.Country, .City{*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: flex-start;*/
+/*}*/
 
-.CountryImage, .CityImage{
-    border: cadetblue solid 2px;
-    margin: 20px;
-    width: 300px;
-    height: auto;
-}
+/*.CountryImage, .CityImage{*/
+/*    border: cadetblue solid 2px;*/
+/*    margin: 20px;*/
+/*    width: 300px;*/
+/*    height: auto;*/
+/*}*/
 
-.CountryName, .CityName{
-    font-weight: bold;
-    text-transform: uppercase;
-}
+/*.CountryName, .CityName{*/
+/*    font-weight: bold;*/
+/*    text-transform: uppercase;*/
+/*}*/

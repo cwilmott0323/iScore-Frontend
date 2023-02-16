@@ -22,6 +22,7 @@ function Country(){
     let country = null
     const location = useLocation()
     try {
+        console.log("Locations State:", location.state)
         country = location.state
     } catch (e) {
 
@@ -31,27 +32,61 @@ function Country(){
         getCities()
     }, [getCities, location]);
 
+    // return(
+    //     <div>
+    //         <div className="Header">
+    //             {<UserHeader/>}
+    //         </div>
+    //         <div className="Title">
+    //             Choose A City
+    //         </div>
+    //         <div>
+    //             {!isLoading && <div>
+    //                 {cityData[0].map(({ city_id, city_name, image_location, country_id }) => (
+    //                     <div className="City" key={city_id}>
+    //                         <Link state={{ city: city_name, country: country }} to={`${city_name}`}>
+    //                             <img src={`${process.env.REACT_APP_MEDIA_BASE_URL}${image_location}`} className="CityImage" alt="p" />
+    //                         </Link>
+    //                         <div className="CityName">
+    //                             <Link state={{ city: city_name, country: country }} to={`${city_name}`}>{city_name}</Link>
+    //                         </div>
+    //                     </div>
+    //                 ))}
+    //             </div>}
+    //         </div>
+    //     </div>
+    // )
+
     return(
         <div>
             <div className="Header">
                 {<UserHeader/>}
             </div>
+            <div className=" ml-4 mr-4 ">
             <div className="Title">
                 Choose A City
             </div>
             <div>
-                {!isLoading && <div>
+                {!isLoading && <div className="grid grid-cols-5 gap-3">
                     {cityData[0].map(({ city_id, city_name, image_location, country_id }) => (
-                        <div className="City" key={city_id}>
-                            <Link state={{ city: city_name, country: country }} to={`${city_name}`}>
-                                <img src={`${process.env.REACT_APP_MEDIA_BASE_URL}${image_location}`} className="CityImage" alt="p" />
+                        <div>
+                            <Link to={
+                                {
+                                    pathname: `/countries/${country.country}/cities/${city_name}`
+                                }
+                            } state={{ city: city_name }}>{city_name}
                             </Link>
-                            <div className="CityName">
-                                <Link state={{ city: city_name, country: country }} to={`${city_name}`}>{city_name}</Link>
-                            </div>
+                            <Link to={
+                                {
+                                    pathname: `/countries/${country.country}/cities/${city_name}`
+                                }
+                            } state={{ city: city_name }}>
+                                <img src={`${process.env.REACT_APP_MEDIA_BASE_URL}${image_location}`} className="CountryImage object-fill h-60 w-80" alt="p" />
+                            </Link>
                         </div>
                     ))}
                 </div>}
+                </div>
             </div>
         </div>
     )

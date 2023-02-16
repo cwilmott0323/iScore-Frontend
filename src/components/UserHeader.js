@@ -38,22 +38,19 @@ function UserHeader() {
     }
 
     return(
-
-        <div className="user-header">
-        <div className="User-Greet">
-            <h2 className="User-Points"> {userCont.name}</h2>
-            <div className="User-Points">
-                <h3 className="points">{userCont.points} </h3>
+        <div className="grid grid-cols-1 grid-rows-1">
+        <div className="flex flex-row justify-end align-items-center" >
+            <div className="flex justify-center content-center align-middle align-items-center">
+                <h2 className="mb-0 mr-3"> {userCont.name}</h2>
+                <h3 className="mb-0 mr-3"> {userCont.points} </h3>
                 <GiTrophyCup size="38px" className="trophy" color={userCont.points < 100 ? "#CD7F32" : userCont.points > 150 ? "#FFD700" : "#C0C0C0"} />
             </div>
-        </div>
-            <button type="button" className="Logout-Button" onClick={() => handleClick()}>
+            <div className="flex">
+            <button type="button" className="bg-[#04aa6d] hover:bg-[#198754] text-white text-sm px-4 py-2 border rounded-full align-self-end" onClick={() => handleClick()}>
                 Logout
             </button>
-
-            {/*<div className="">*/}
-            {/*    <button onClick={() => handleClick()}>Logout</button>*/}
-            {/*</div>*/}
+            </div>
+        </div>
         </div>
     )
 }

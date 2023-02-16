@@ -27,31 +27,31 @@ function Countries(){
             <div className="Header">
                 {<UserHeader/>}
             </div>
+            <div className=" ml-4 mr-4 ">
         <div className="Title">
-            Choose A Cities
+            Choose A Country
         </div>
             <div>
-                {!isLoading && <div>
+                {!isLoading && <div className="grid grid-cols-5 gap-3">
                     {countryData[0].map(({ country_id, country_name, image_location }) => (
-                        <div className="Country" key={country_id}>
-                            <Link to={
-                                {
-                                    pathname: `/countries/${country_name}/cities`
-                                    }
-                                } state={{ country: country_name }}>
-                                <img src={`${process.env.REACT_APP_MEDIA_BASE_URL}${image_location}`} className="CountryImage" alt="p" />
-                            </Link>
-                        <div className="CountryName">
+                        <div>
                             <Link to={
                                 {
                                     pathname: `/countries/${country_name}/cities`
                                 }
                             } state={{ country: country_name }}>{country_name}
                             </Link>
-                        </div>
-                    </div>
+                            <Link to={
+                                {
+                                    pathname: `/countries/${country_name}/cities`
+                                }
+                            } state={{ country: country_name }}>
+                                <img src={`${process.env.REACT_APP_MEDIA_BASE_URL}${image_location}`} className="CountryImage object-fill h-60 w-80" alt="p" />
+                            </Link>
+                            </div>
                     ))}
                 </div>}
+            </div>
             </div>
         </div>
     )

@@ -11,6 +11,7 @@ import ErrorModal from "./components/Error-Modal";
 async function loginUser(credentials) {
     console.log("Creds:", credentials)
     try {
+        console.log(`${process.env.REACT_APP_API_BASE_URL}accounts-login`)
         return {
             token: await axios.post(`${process.env.REACT_APP_API_BASE_URL}accounts-login`, JSON.stringify(credentials)),
             error: null
@@ -59,7 +60,7 @@ function Login() {
     return (
         <div className="flex justify-center items-center">
         <div className="w-80">
-            <div className="border-2 border-#e3e3e3 rounded-lg mt-20 w-128">
+            <div className="border-2 border-#e3e3e3 rounded-xl mt-20 w-128">
                 <div className="justify-center text-center content-center">
                     {success && <SuccessModal/>}
                     {error && <ErrorModal error={error}/>}
@@ -71,11 +72,11 @@ function Login() {
                 <label className="email ml-10">Email address: </label>
                     <div className="flex">
                 <input type="email" className="ml-10 mr-10 flex grow border-2 border-#e3e3e3 rounded-md" placeholder="Enter email"
-                                                        onChange={e => {
-                                                            setUserName(e.target.value)
-                                                            console.log("Email: ", email)
-                                                        }
-                                                            }>
+                       onChange={e => {
+                           setUserName(e.target.value)
+                           console.log("Email: ", email)
+                       }
+                }>
                 </input>
                     </div>
                 <label className="password ml-10">Password: </label>
@@ -86,11 +87,11 @@ function Login() {
                         </div>
                     <div className="flex justify-center">
                 <button type="submit"
-                   className="ml-10 mr-10 flex grow bg-[#04aa6d] hover:bg-[#198754] text-white text-sm px-4 py-2 border rounded-full justify-center">
+                   className="ml-10 mr-10 mb-3 flex grow bg-[#04aa6d] hover:bg-[#198754] text-white text-sm px-4 py-2 border rounded-full justify-center">
                     Log in
                 </button>
                         </div>
-
+                </form>
                 {openModal && <SignupModal setOpenModal={setOpenModal} setSuccess={setSuccess} openModal={openModal}/>}
                 <p className="forgot-password justify-center text-center">
                     Forgot <a href="#">password?</a>
@@ -98,7 +99,7 @@ function Login() {
                 <p className="account justify-center text-center">
                     Need an account?
                 </p>
-                </form>
+
                 <div className="flex justify-center">
                 <button onClick={() => setOpenModal(true)}
                    className="ml-10 mr-10 flex grow bg-[#04aa6d] hover:bg-[#198754] text-white text-sm px-4 py-2 border rounded-full justify-center mb-10">
