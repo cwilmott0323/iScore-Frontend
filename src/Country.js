@@ -81,7 +81,7 @@ function Country(){
                                     pathname: `/countries/${country.country}/cities/${city_name}`
                                 }
                             } state={{ city: city_name }}>
-                                <img src={`${process.env.REACT_APP_MEDIA_BASE_URL}${image_location}`} className="CountryImage object-fill h-60 w-80" alt="p" />
+                                <img src={`${process.env.REACT_APP_MEDIA_BASE_URL}${image_location}`} className="CountryImage object-fill" alt="p" />
                             </Link>
                         </div>
                     ))}
