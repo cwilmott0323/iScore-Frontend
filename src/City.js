@@ -72,7 +72,7 @@ function City() {
             <div className=" ml-4 mr-4 ">
             <div className="city">
                 Places
-                    {!isLoading && <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 gap-3 justify-center content-center object-fill justify-items-center">
+                    {!isLoading && <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3 sm:gap-3:grid-cols-3 md:grid-cols-3 grid-cols-3 gap-3">
                     {cityDataPlaces.map(({ activity_id, activity_name, activity_type, city_id, city_name,country_id,country_name,image_location ,points, sponsored}) => (
                         <div className="City" key={activity_id}>
                                 <img src={`${process.env.REACT_APP_MEDIA_BASE_URL}${image_location}`} className="CityImage object-contain vw-100" alt="p" />
