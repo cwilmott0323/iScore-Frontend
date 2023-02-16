@@ -71,23 +71,17 @@ function Login() {
                 <label className="email ml-10">Email address: </label>
                     <div className="flex">
                 <input type="email" className="ml-10 mr-10 flex grow border-2 border-#e3e3e3 rounded-md" placeholder="Enter email"
-                       onChange={e => {
-                           // setUserName(e.target.value)
-                           // console.log("Email: ", email)
-                       }
-
-                       }>
+                                                        onChange={e => {
+                                                            setUserName(e.target.value)
+                                                            console.log("Email: ", email)
+                                                        }
+                                                            }>
                 </input>
                     </div>
                 <label className="password ml-10">Password: </label>
                     <div className="flex">
                 <input type="password" className="mb-3 ml-10 mr-10 flex border-2 border-#e3e3e3 rounded-md grow" placeholder="Enter password"
-                       onChange={e => {
-                           // setUserName(e.target.value)
-                           // console.log("Email: ", email)
-                       }
-
-                       }>
+                       onChange={e => setPassword(e.target.value)}>
                 </input>
                         </div>
                     <div className="flex justify-center">
