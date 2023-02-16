@@ -75,7 +75,7 @@ function City() {
             </div>
             <div className="">
         <div className="flex flex-col grow-0 m-5 gap-3">
-            <div id="carouselExampleCaptions1" className="flex carousel slide relative" data-bs-ride="carousel">
+            <div id="carouselExampleCaptions1" className="flex carousel slide relative h-screen" data-bs-ride="carousel">
                 <div className="carousel-indicators absolute right-0 bottom-0 left-0 flex p-0 mb-4">
             {!isLoading && cityDataPlaces.map((key, index) => (
                 index === 0 ?
