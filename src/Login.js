@@ -116,7 +116,7 @@ function Login() {
     //     <div>
     //         <div className="App">
     //             <header className="App-header">
-    //                 {/*<h1 className="App-name">iScore</h1>*/}
+    //                 <h1 className="App-name">iScore</h1>
     //                 {success && <SuccessModal/>}
     //                 {error && <ErrorModal error={error}/>}
     //             </header>
