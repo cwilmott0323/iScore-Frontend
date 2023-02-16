@@ -67,7 +67,7 @@ function Country(){
                 Choose A City
             </div>
             <div>
-                {!isLoading && <div className="grid grid-cols-5 gap-3">
+                {!isLoading && <div className="grid grid-cols-4 gap-3">
                     {cityData[0].map(({ city_id, city_name, image_location, country_id }) => (
                         <div>
                             <Link to={

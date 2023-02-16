@@ -32,7 +32,7 @@ function Countries(){
             Choose A Country
         </div>
             <div>
-                {!isLoading && <div className="grid grid-cols-5 gap-3">
+                {!isLoading && <div className="grid grid-cols-4 gap-3">
                     {countryData[0].map(({ country_id, country_name, image_location }) => (
                         <div>
                             <Link to={
