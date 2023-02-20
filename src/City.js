@@ -2,8 +2,8 @@ import UserHeader from "./components/UserHeader";
 import axios from "axios";
 import {Link, useLocation} from "react-router-dom";
 import {useCallback, useEffect, useState} from "react";
-import 'tw-elements';
-import userHeader from "./components/UserHeader";
+import {Carousel} from "react-daisyui";
+import { Button } from 'react-daisyui'
 
 
 function City() {
@@ -68,217 +68,52 @@ function City() {
             </div>
         );
     }
-    return(
+
+    return (
         <div>
-            <div>
-                {<UserHeader/>}
-            </div>
-            <div className="">
-        <div className="flex flex-col grow-0 m-5 gap-3">
-            <div id="carouselExampleCaptions1" className="flex carousel slide relative h-screen" data-bs-ride="carousel">
-                <div className="carousel-indicators absolute right-0 bottom-0 left-0 flex p-0 mb-4">
-            {!isLoading && cityDataPlaces.map((key, index) => (
-                index === 0 ?
-                        <button
-                            type="button"
-                            data-bs-target="#carouselExampleCaptions1"
-                            data-bs-slide-to="0"
-                            className="active"
-                            aria-current="true"
-                            aria-label="Slide 1"
-                        >
-                        </button>
-                            :
-                        <button
-                            type="button"
-                            data-bs-target="#carouselExampleCaptions1"
-                            data-bs-slide-to={index}
-                            aria-label="Slide 2"
-                        ></button>
-                        ))}
+                <div className="Header">
+                    {<UserHeader/>}
+                </div>
+            <div className="flex flex-col gap-10 ml-5 mr-5">
+                    <div className="carousel rounded-box gap-2">
+                        {!isLoading && cityDataPlaces.map((key, index) => (
+                            <div>
+                        <div className="carousel-item relative h-80 w-80">
+                                <img className="static" src={`${process.env.REACT_APP_MEDIA_BASE_URL}${key.image_location}`} alt="Burger" />
+                                <div className="absolute inset-x-0 bottom-0 text-center">
+                                <button className="btn glass">{key.activity_name}</button>
+                                </div>
+                                </div>
+                            </div>
+                            ))}
                     </div>
-                <div className="carousel-inner relative w-full overflow-hidden">
-                    {!isLoading && cityDataPlaces.map((key, index) => (
-                        index === 0 ?
-                            <div className="carousel-item active relative float-left w-full">
-                                <img
-                                    src={`${process.env.REACT_APP_MEDIA_BASE_URL}${key.image_location}`}
-                                    className="block w-full"
-                                    alt="..."
-                                />
-                                <div className="carousel-caption hidden md:block absolute text-center">
-                                    <h5 className="text-xl">{key.activity_name}</h5>
-                                </div>
+            <div className="carousel rounded-box gap-2">
+                {!isLoading && cityDataFood.map((key, index) => (
+                    <div>
+                        <div className="carousel-item relative h-80 w-80">
+                            <img className="static" src={`${process.env.REACT_APP_MEDIA_BASE_URL}${key.image_location}`} alt="Burger" />
+                            <div className="absolute inset-x-0 bottom-0 text-center">
+                                <button className="btn glass sm:h-64 md:h-64 lg:h-64 xl:h-12">{key.activity_name}</button>
                             </div>
-                            :
-                            <div className="carousel-item relative float-left w-full">
-                                <img
-                                    src={`${process.env.REACT_APP_MEDIA_BASE_URL}${key.image_location}`}
-                                    className="block w-full"
-                                    alt="..."
-                                />
-                                <div className="carousel-caption hidden md:block absolute text-center">
-                                    <h5 className="text-xl">{key.activity_name}</h5>
-                                </div>
-                            </div>
-                    ))}
-                </div>
-                <button
-                    className="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
-                    type="button"
-                    data-bs-target="#carouselExampleCaptions1"
-                    data-bs-slide="prev"
-                >
-                    <span className="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
-                    <span className="visually-hidden">Previous</span>
-                </button>
-                <button
-                    className="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
-                    type="button"
-                    data-bs-target="#carouselExampleCaptions1"
-                    data-bs-slide="next"
-                >
-                    <span className="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
-                    <span className="visually-hidden">Next</span>
-                </button>
+                        </div>
+                    </div>
+                ))}
             </div>
-            <div id="carouselExampleCaptions2" className="flex carousel slide relative" data-bs-ride="carousel">
-                <div className="carousel-indicators absolute right-0 bottom-0 left-0 flex p-0 mb-4">
-                    {!isLoading && cityDataFood.map((key, index) => (
-                        index === 0 ?
-                            <button
-                                type="button"
-                                data-bs-target="#carouselExampleCaptions2"
-                                data-bs-slide-to="0"
-                                className="active"
-                                aria-current="true"
-                                aria-label="Slide 1"
-                            >
-                            </button>
-                            :
-                            <button
-                                type="button"
-                                data-bs-target="#carouselExampleCaptions2"
-                                data-bs-slide-to={index}
-                                aria-label="Slide 2"
-                            ></button>
-                    ))}
-                </div>
-                <div className="carousel-inner relative w-full overflow-hidden">
-                    {!isLoading && cityDataFood.map((key, index) => (
-                        index === 0 ?
-                            <div className="carousel-item active relative float-left w-full">
-                                <img
-                                    src={`${process.env.REACT_APP_MEDIA_BASE_URL}${key.image_location}`}
-                                    className="block w-full"
-                                    alt="..."
-                                />
-                                <div className="carousel-caption hidden md:block absolute text-center">
-                                    <h5 className="text-xl">{key.activity_name}</h5>
-                                </div>
+            <div className="carousel rounded-box gap-2">
+                {!isLoading && cityDataEvents.map((key, index) => (
+                    <div>
+                        <div className="carousel-item relative h-80 w-80">
+                            <img className="static" src={`${process.env.REACT_APP_MEDIA_BASE_URL}${key.image_location}`} alt="Burger" />
+                            <div className="absolute inset-x-0 bottom-0 text-center">
+                                <button className="btn glass sm:h-64 md:h-64 lg:h-64 xl:h-12">{key.activity_name}</button>
                             </div>
-                            :
-                            <div className="carousel-item relative float-left w-full">
-                                <img
-                                    src={`${process.env.REACT_APP_MEDIA_BASE_URL}${key.image_location}`}
-                                    className="block w-full"
-                                    alt="..."
-                                />
-                                <div className="carousel-caption hidden md:block absolute text-center">
-                                    <h5 className="text-xl">{key.activity_name}</h5>
-                                </div>
-                            </div>
-                    ))}
-                </div>
-                <button
-                    className="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
-                    type="button"
-                    data-bs-target="#carouselExampleCaptions2"
-                    data-bs-slide="prev"
-                >
-                    <span className="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
-                    <span className="visually-hidden">Previous</span>
-                </button>
-                <button
-                    className="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
-                    type="button"
-                    data-bs-target="#carouselExampleCaptions2"
-                    data-bs-slide="next"
-                >
-                    <span className="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
-                    <span className="visually-hidden">Next</span>
-                </button>
+                        </div>
+                    </div>
+                ))}
             </div>
-            <div id="carouselExampleCaptions3" className="flex carousel slide relative" data-bs-ride="carousel">
-                <div className="carousel-indicators absolute right-0 bottom-0 left-0 flex p-0 mb-4">
-                    {!isLoading && cityDataEvents.map((key, index) => (
-                        index === 0 ?
-                            <button
-                                type="button"
-                                data-bs-target="#carouselExampleCaptions3"
-                                data-bs-slide-to="0"
-                                className="active"
-                                aria-current="true"
-                                aria-label="Slide 1"
-                            >
-                            </button>
-                            :
-                            <button
-                                type="button"
-                                data-bs-target="#carouselExampleCaptions3"
-                                data-bs-slide-to={index}
-                                aria-label="Slide 2"
-                            ></button>
-                    ))}
-                </div>
-                <div className="carousel-inner relative w-full overflow-hidden">
-                    {!isLoading && cityDataEvents.map((key, index) => (
-                        index === 0 ?
-                            <div className="carousel-item active relative float-left w-full">
-                                <img
-                                    src={`${process.env.REACT_APP_MEDIA_BASE_URL}${key.image_location}`}
-                                    className="block w-full"
-                                    alt="..."
-                                />
-                                <div className="carousel-caption hidden md:block absolute text-center">
-                                    <h5 className="text-xl">{key.activity_name}</h5>
-                                </div>
-                            </div>
-                            :
-                            <div className="carousel-item relative float-left w-full">
-                                <img
-                                    src={`${process.env.REACT_APP_MEDIA_BASE_URL}${key.image_location}`}
-                                    className="block w-full"
-                                    alt="..."
-                                />
-                                <div className="carousel-caption hidden md:block absolute text-center">
-                                    <h5 className="text-xl">{key.activity_name}</h5>
-                                </div>
-                            </div>
-                    ))}
-                </div>
-                <button
-                    className="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
-                    type="button"
-                    data-bs-target="#carouselExampleCaptions3"
-                    data-bs-slide="prev"
-                >
-                    <span className="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
-                    <span className="visually-hidden">Previous</span>
-                </button>
-                <button
-                    className="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
-                    type="button"
-                    data-bs-target="#carouselExampleCaptions3"
-                    data-bs-slide="next"
-                >
-                    <span className="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
-                    <span className="visually-hidden">Next</span>
-                </button>
             </div>
-        </div>
             </div>
-        </div>
     );
 }
+
 export default City

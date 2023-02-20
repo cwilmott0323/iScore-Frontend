@@ -1,13 +1,5 @@
-import "./Modal.css";
-import "../index.css";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import Form from "react-bootstrap/Form";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {MDBCheckbox} from "mdb-react-ui-kit";
-
 
 const validEmail = new RegExp(
     '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$'
@@ -33,9 +25,7 @@ async function createUser(credentials) {
 }
 
 
-function SignupModal({ setOpenModal, setSuccess, openModal }) {
-    // Modal Stuff
-    const handleClose = () => setOpenModal(false);
+function SignupModal({setOpenModal, openModal, setSuccess}){
 
     // Modal Stuff
     const [agreement, setAgreement] = useState(false);
@@ -54,7 +44,8 @@ function SignupModal({ setOpenModal, setSuccess, openModal }) {
     const [signupName, setSignupName] = useState("");
     const [signupNameBool, setSignupNameBool] = useState(true);
 
-    const handleSubmit = async e => {
+    const handleSubmitSignUp = async e => {
+        console.log("Handle Submit")
         e.preventDefault();
         const resp = await createUser({
             email,
@@ -154,120 +145,105 @@ function SignupModal({ setOpenModal, setSuccess, openModal }) {
         checkPasswordValid(password)
         checkPasswordMatch(passwordVerify, password)
     }, [confirmEmail, email, password, passwordVerify, signupName]);
+   return (
 
-    return(
-        <Modal show={openModal} onHide={handleClose} contentClassName="modal-outer">
-            <Modal.Header closeButton>
-                <Modal.Title>Registration</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                {
-                    incorrect &&
-                    <Modal.Dialog className="modal-error" contentClassName="modal-error">
-                        Please Try Again
-                    </Modal.Dialog>
-                }
-                {
-                    !emailValid &&
-                    <Modal.Dialog className="modal-error" contentClassName="modal-error">
-                        Please enter a valid email.
-                    </Modal.Dialog>
-                }
-                {
-                    !confirmEmailBool &&
-                    <Modal.Dialog className="modal-error" contentClassName="modal-error">
-                        Emails do not match.
-                    </Modal.Dialog>
-                }
-                {
-                    !signupNameBool &&
-                    <Modal.Dialog className="modal-error" contentClassName="modal-error">
-                        Name is not valid.
-                    </Modal.Dialog>
-                }
-                {
-                    !passwordValid &&
-                    <Modal.Dialog className="modal-error" contentClassName="modal-error">
-                        Password is not valid.
-                    </Modal.Dialog>
-                }
-                {
-                    !passwordVerifyBool &&
-                    <Modal.Dialog className="modal-error" contentClassName="modal-error">
-                        Passwords do not match.
-                    </Modal.Dialog>
-                }
-                <Form>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control
-                            type="email"
-                            placeholder="name@example.com"
-                            autoFocus
-                            onBlur={e => {
-                                setEmail(e.target.value)
-                            }
-                        }
-                        />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Confirm email address</Form.Label>
-                        <Form.Control
-                            type="email"
-                            className="form-control mt-1"
-                            placeholder="name@example.com"
-                            onBlur={e => {
-                                setConfirmEmail(e.target.value)
-                            }}
-                        />
-                    </Form.Group>
+       <div>
+       <input type="checkbox" id="my-modal-4" className="modal-toggle" />
+   <label htmlFor="my-modal-4" className="modal cursor-pointer">
+      <label className="modal-box">
+          {
+              incorrect &&
+              <div className="modal-error" >
+                  Please Try Again
+              </div>
+          }
+          {
+              !emailValid &&
+              <div className="modal-error" >
+                  Please enter a valid email.
+              </div>
+          }
+          {
+              !confirmEmailBool &&
+              <div className="modal-error" >
+                  Emails do not match.
+              </div>
+          }
+          {
+              !signupNameBool &&
+              <div className="modal-error" >
+                  Name is not valid.
+              </div>
+          }
+          {
+              !passwordValid &&
+              <div className="modal-error" >
+                  Password is not valid.
+              </div>
+          }
+          {
+              !passwordVerifyBool &&
+              <div className="modal-error" >
+                  Passwords do not match.
+              </div>
+          }
+              <div className="form-control justify-between" >
+                  <label className="label">
+                      <span className="label-text">Email</span>
+                  </label>
+                  <input type="text" placeholder="email" className="input input-bordered"
+                         onBlur={e => {
+                             setEmail(e.target.value)
+                             console.log("Email: ", email)
+                         }}
+                  />
+              </div>
+              <div className="form-control">
+                  <label className="label">
+                      <span className="label-text">Confirm Email</span>
+                  </label>
+                  <input type="email" placeholder="email" className="input input-bordered"
+                        onBlur={e => {
+                        setConfirmEmail(e.target.value)
+                        }}/>
 
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>First Name</Form.Label>
-                        <Form.Control
-                            type="name"
-                            className="form-control mt-1"
-                            placeholder="First name"
-                            onBlur={e => setSignupName(e.target.value)}
-                        />
-                    </Form.Group>
+                  <label className="label">
+                      <span className="label-text">First Name</span>
+                  </label>
+                  <input type="text" placeholder="First Name" className="input input-bordered"
+                         onBlur={e => setSignupName(e.target.value)}/>
 
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control
-                            type="password"
-                            className="form-control mt-1"
-                            placeholder="Password"
-                            onBlur={e => setPassword(e.target.value)}
-                        />
-                    </Form.Group>
+                  <label className="label">
+                      <span className="label-text">Password</span>
+                  </label>
+                  <input type="password" placeholder="password" className="input input-bordered"
+                         onBlur={e => setPassword(e.target.value)}/>
 
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Confirm Password</Form.Label>
-                        <Form.Control
-                            type="password"
-                            className="form-control mt-1"
-                            placeholder="Confirm Password"
-                            onBlur={e => setPasswordVerify(e.target.value)}
-                        />
-                    </Form.Group>
-                    <MDBCheckbox name="terms" label="I agree to the terms and conditions" onChange={handleChange}>
-                    </MDBCheckbox>
-                </Form>
-            </Modal.Body>
-            <Modal.Footer>
-                <Button
-                    className="register"
-                    disabled={(!agreement || !allowRegister || !passwordVerifyBool || !signupNameBool || !confirmEmailBool || !passwordValid)}
-                    variant="primary" onClick={handleSubmit}>
-                    Register
-                </Button>
-                <Button className="register" variant="secondary" onClick={handleClose}>
-                    Close
-                </Button>
-            </Modal.Footer>
-        </Modal>
-    )
+                  <label className="label">
+                      <span className="label-text">Confirm Password</span>
+                  </label>
+                  <input type="password" placeholder="password" className="input input-bordered"
+                         onBlur={e => setPasswordVerify(e.target.value)}/>
+
+                  <div className="form-control">
+                      <label className="cursor-pointer label">
+                          <span className="label-text">I agree to the terms</span>
+                          <input onChange={handleChange} type="checkbox" className="checkbox checkbox-success" />
+                      </label>
+                  </div>
+
+                  <div className="form-control mt-6">
+                      <button disabled={(!agreement || !allowRegister || !passwordVerifyBool || !signupNameBool || !confirmEmailBool || !passwordValid)} onClick={handleSubmitSignUp} className="btn bg-[#04aa6d] hover:bg-[#198754] border-[#04aa6d]">Submit</button>
+                  </div>
+                  <div className="form-control mt-6">
+                      <label htmlFor="my-modal-4" className="btn bg-[#04aa6d] hover:bg-[#198754] border-[#04aa6d]">Close</label>
+                  </div>
+              </div>
+      </label>
+   </label>
+
+       </div>
+   );
 }
 
 export default SignupModal

@@ -3,9 +3,7 @@ import UseToken from "../UseToken";
 import IsAuth from "../IsAuth";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
-import { GiTrophyCup } from "react-icons/gi";
 import "./../index.css";
-import Button from "react-bootstrap/Button";
 
 function UserHeader() {
     const [userCont, setUserCont] = useState([]);
@@ -38,19 +36,33 @@ function UserHeader() {
     }
 
     return(
-        <div className="grid grid-cols-1 grid-rows-1">
-        <div className="flex flex-row justify-end align-items-center" >
-            <div className="flex justify-center content-center align-middle align-items-center">
-                <h2 className="mb-0 mr-3"> {userCont.name}</h2>
-                <h3 className="mb-0 mr-3"> {userCont.points} </h3>
-                <GiTrophyCup size="38px" className="trophy" color={userCont.points < 100 ? "#CD7F32" : userCont.points > 150 ? "#FFD700" : "#C0C0C0"} />
+        <div className="navbar bg-base-100">
+            <div className="flex-1">
+                <a className="btn btn-ghost normal-case text-xl">iScore</a>
             </div>
-            <div className="flex">
-            <button type="button" className="bg-[#04aa6d] hover:bg-[#198754] text-white text-sm px-4 py-2 border rounded-full align-self-end" onClick={() => handleClick()}>
-                Logout
-            </button>
+            <div className="flex-none gap-2">
+                <div className="form-control">
+                    <input type="text" placeholder="Search" className="input input-bordered" />
+                </div>
+                <div className="dropdown dropdown-end">
+                    <label tabIndex={0}>
+                    <div className="navbar-end">
+                        <a className="text-2xl mr-3">{userCont.name}</a>
+                        <a className="text-2xl">{userCont.points}</a>
+                    </div>
+                        </label>
+                    <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+                        <li>
+                            <a className="justify-between">
+                                Profile
+                                <span className="badge">New</span>
+                            </a>
+                        </li>
+                        <li><a>Settings</a></li>
+                        <li><a>Logout</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
         </div>
     )
 }

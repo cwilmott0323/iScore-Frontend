@@ -27,27 +27,29 @@ function Countries(){
             <div className="Header">
                 {<UserHeader/>}
             </div>
-            <div className=" ml-4 mr-4 ">
-        <div className="Title">
-            Choose A Country
-        </div>
+            <div className="ml-4 mr-4 ">
             <div>
-                {!isLoading && <div className="grid grid-cols-4 gap-3">
+                {!isLoading && <div className="grid 2xl:grid-cols-4 sm:grid-cols-1 gap-3 gap-y-10 place-items-center">
                     {countryData[0].map(({ country_id, country_name, image_location }) => (
-                        <div>
-                            <Link to={
-                                {
-                                    pathname: `/countries/${country_name}/cities`
-                                }
-                            } state={{ country: country_name }}>{country_name}
-                            </Link>
-                            <Link to={
-                                {
-                                    pathname: `/countries/${country_name}/cities`
-                                }
-                            } state={{ country: country_name }}>
-                                <img src={`${process.env.REACT_APP_MEDIA_BASE_URL}${image_location}`} className="CountryImage object-fill" alt="p" />
-                            </Link>
+                        <div key={country_id}>
+                            <div className="card w-64 bg-base-100 shadow-xl">
+                                <figure><img src={`${process.env.REACT_APP_MEDIA_BASE_URL}${image_location}`} className="CountryImage object-fill" alt="p" /></figure>
+                                <div className="card-body">
+                                    <h2 className="card-title">{country_name}</h2>
+                                    <p>Some country info</p>
+                                    <div className="card-actions justify-end">
+                                        <Link to={
+                                            {
+                                                pathname: `/countries/${country_name}/cities`
+                                            }
+
+                                        } state={{ country: country_name }}>
+                                            <button className="btn btn-primary">View</button>
+                                        </Link>
+
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                     ))}
                 </div>}

@@ -1,50 +1,47 @@
-import React, {useState} from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {Modal, Button} from 'react-bootstrap';
-import Form from 'react-bootstrap/Form';
+import {Link} from "react-router-dom";
 
-export default function App() {
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+function Home() {
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                Launch demo modal
-            </Button>
+            <button className="btn">Button</button>
+            <button className="btn btn-primary">Button</button>
+            <button className="btn btn-secondary">Button</button>
+            <button className="btn btn-accent">Button</button>
+            <button className="btn btn-ghost">Button</button>
+            <button className="btn btn-link">Button</button>
+            <div className="card w-64 bg-base-100 shadow-xl mt-10">
+                <figure><img src="https://iscore-media.s3.us-east-2.amazonaws.com/Countries/England/bigben.jpeg" alt="Shoes" /></figure>
+                <div className="card-body">
+                    <h2 className="card-title">Shoes!</h2>
+                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                    <div className="card-actions justify-end">
+                        <button className="btn btn-primary">Buy Now</button>
+                    </div>
+                </div>
+            </div>
 
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control
-                                type="email"
-                                placeholder="name@example.com"
-                                autoFocus
-                            />
-                        </Form.Group>
-                        <Form.Group
-                            className="mb-3"
-                            controlId="exampleForm.ControlTextarea1"
-                        >
-                            <Form.Label>Example textarea</Form.Label>
-                            <Form.Control as="textarea" rows={3} />
-                        </Form.Group>
-                    </Form>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Save Changes
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+            <div className="carousel carousel-center max-w-md p-4 space-x-4 bg-red-300 rounded-box">
+                <div className="carousel-item">
+                    <Link to={
+                        {
+                            pathname: `/login`
+                        }
+                    }>
+                        <img src="https://iscore-media.s3.us-east-2.amazonaws.com/Countries/England/bigben.jpeg" alt="Burger" />
+                    </Link>
+                </div>
+                <div className="carousel-item">
+                    <img src="https://iscore-media.s3.us-east-2.amazonaws.com/Countries/England/bigben.jpeg" alt="Burger" />
+                </div>
+                <div className="carousel-item">
+                    <img src="https://iscore-media.s3.us-east-2.amazonaws.com/Countries/England/bigben.jpeg" alt="Burger" />
+                </div>
+                <div className="carousel-item">
+                    <img src="https://iscore-media.s3.us-east-2.amazonaws.com/Countries/England/bigben.jpeg" alt="Burger" />
+                </div>
+            </div>
         </>
     );
 }
+
+export default Home;
