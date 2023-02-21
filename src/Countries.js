@@ -32,8 +32,8 @@ function Countries(){
                 {!isLoading && <div className="grid 2xl:grid-cols-4 sm:grid-cols-1 gap-3 gap-y-10 place-items-center">
                     {countryData[0].map(({ country_id, country_name, image_location }) => (
                         <div key={country_id}>
-                            <div className="card w-64 bg-base-100 shadow-xl">
-                                <figure><img src={`${process.env.REACT_APP_MEDIA_BASE_URL}${image_location}`} className="CountryImage object-fill" alt="p" /></figure>
+                            <div className="card w-80 bg-base-100 shadow-xl">
+                                <figure><img src={`${process.env.REACT_APP_MEDIA_BASE_URL}${image_location}`} className="CountryImage object-fill w-full" alt="p" /></figure>
                                 <div className="card-body">
                                     <h2 className="card-title">{country_name}</h2>
                                     <p>Some country info</p>

@@ -43,8 +43,8 @@ function Country(){
                     {!isLoading && <div className="grid xl:grid-cols-4 sm:grid-cols-2 gap-3 gap-y-10 place-items-center">
                         {cityData[0].map(({ city_id, city_name, image_location, country_id, country_name }) => (
                             <div key={city_id}>
-                                <div className="card w-64 bg-base-100 shadow-xl">
-                                    <figure><img src={`${process.env.REACT_APP_MEDIA_BASE_URL}${image_location}`} className="CountryImage object-fill" alt="p" /></figure>
+                                <div className="card w-80 bg-base-100 shadow-xl">
+                                    <figure><img src={`${process.env.REACT_APP_MEDIA_BASE_URL}${image_location}`} className="CountryImage object-fill w-full" alt="p" /></figure>
                                     <div className="card-body">
                                         <h2 className="card-title">{city_name}</h2>
                                         <p>Some city info</p>
