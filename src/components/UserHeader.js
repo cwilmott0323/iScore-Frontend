@@ -48,7 +48,7 @@ function UserHeader() {
                     <label tabIndex={0}>
                     <div className="navbar-end">
                         <a className="text-2xl mr-3">{userCont.name}</a>
-                        <a className="text-2xl">{userCont.points}</a>
+                        <a className="text-2xl mr-3">{userCont.points}</a>
                     </div>
                         </label>
                     <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
