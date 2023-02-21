@@ -74,8 +74,8 @@ function City() {
                 <div className="Header">
                     {<UserHeader/>}
                 </div>
-            <div className="flex flex-col gap-10 ml-5 mr-5">
-                    <div className="carousel rounded-box gap-2 border-8 border-gray-400">
+            <div className="flex flex-col gap-10">
+                    <div className="carousel rounded-box border-4 border-gray-400 m-1">
                         {!isLoading && cityDataPlaces.map((key, index) => (
                             <div>
                         <div className="carousel-item relative h-80 w-80">
