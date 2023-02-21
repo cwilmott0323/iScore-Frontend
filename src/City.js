@@ -79,7 +79,7 @@ function City() {
                         {!isLoading && cityDataPlaces.map((key, index) => (
                             <div>
                         <div className="carousel-item relative h-80 w-80">
-                                <img className="static" src={`${process.env.REACT_APP_MEDIA_BASE_URL}${key.image_location}`} alt="Burger" />
+                                <img className="static rounded-md" src={`${process.env.REACT_APP_MEDIA_BASE_URL}${key.image_location}`} alt="Burger" />
                                 <div className="absolute inset-x-0 bottom-0 text-center">
                                 <button className="btn glass">{key.activity_name}</button>
                                 </div>
